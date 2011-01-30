@@ -261,14 +261,14 @@ if(defaultQuality === "flash") {
 
 var urlsAvailable = [];
 if(prefMan.getVal("Video Url") === "raw") {
-  var urlmap = decodeURIComponent(args['fmt_url_map']).split(",");
+  var urlmap = args['fmt_url_map'].split(",");
 
   for(var i = 0; i < urlmap.length; i++) {
     var test = urlmap[i].split("|",2);
     
     for(var j = 0; j < formatsAvailable.length; j++) {
       if(test[0] == formatsAvailable[j]) {
-        urlsAvailable[j] = test[1];
+        urlsAvailable[j] = decodeURIComponent(test[1]);
       }
     }
   }
